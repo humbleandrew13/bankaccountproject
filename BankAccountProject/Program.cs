@@ -10,6 +10,10 @@ namespace BankAccountProject
     {
         static void Main(string[] args)
         {
+            while(true)
+            {
+
+            }
         }
     }
 }
