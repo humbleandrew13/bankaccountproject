@@ -6,19 +6,29 @@ using System.Threading.Tasks;
 
 namespace BankAccountProject
 {
-    abstract class Account
+    class Account
     {
         //fields
-        private string userName;
-        private string addressLine1;
-        private string addressLine2;
+        static private string userName;
+        static private string addressLine1;
+        static private string addressLine2;
 
         //Property
         public string UserName
         {
-            get { return this.userName; }
+            get { return userName; }
         }
-        
+
+        public string AddressLine1
+        {
+            get { return addressLine1; }
+        }
+
+        public string AddressLine2
+        {
+            get { return addressLine2; }
+        }
+
         //Constructor
         protected Account()
         {
@@ -30,17 +40,12 @@ namespace BankAccountProject
         //Methods
         public void ViewClientInformation()
         {
+            Console.Clear();
             Console.WriteLine("\nClient Account Information\n");
             Console.WriteLine("Name:    {0}\n", UserName);
             Console.WriteLine("Address: {0}", addressLine1);
             Console.WriteLine("         {0}", addressLine2);
+            Console.ReadKey();
         }
-
-        //Abstracts that MUST be created in derived classes
-        public abstract void CheckBalance();
-
-        public abstract void Deposit();
-
-        public abstract void Withdraw();
     }
 }

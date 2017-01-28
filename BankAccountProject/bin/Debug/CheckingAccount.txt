@@ -1,0 +1,7 @@
+Checking Account Information for:
+Ronald J. Dump
+1600 Transylvania Ave
+Dump Tower, ID 87499
+
+1/27/2017 11:05:20 PM -- Made a deposit + $777.45. New balance: $1277.58
+1/27/2017 11:05:27 PM -- Made a deposit + $999.01. New balance: $2276.59

@@ -11,8 +11,8 @@ namespace BankAccountProject
     {
         //fields
         private string accountNumber;
-        private float accountBalance;
-
+        private double accountBalance;
+                
         //Properties
         protected string AccountNumber
         {
@@ -20,33 +20,34 @@ namespace BankAccountProject
             //no set; don't want this to change
         }
 
-        protected float AccountBalance
+        public double AccountBalance
         {
             get { return this.accountBalance; }
             set { this.accountBalance = value; }
         }
-
+        
         //Constructor
         public CheckingAccount():base()
         {
             this.accountNumber = "4567891011";
-            this.accountBalance = 500; //initializing it with $500
+            this.accountBalance = 500.13; //initializing it with $500
         }
-
+        
         //Methods
-        public override void CheckBalance()
+        public void CheckBalance()
         {
-            
+            Console.Clear();
+            Console.WriteLine(" For Checking Account number {0}, the balance is {1}", accountNumber, accountBalance);
         }
 
-        public override void Deposit()
+        public void Deposit(double depositAmount)
         {
-            
+            AccountBalance += depositAmount;
         }
 
-        public override void Withdraw()
+        public void Withdraw(double withdrawAmount)
         {
-            
+            AccountBalance -= withdrawAmount;
         }
     }
 }

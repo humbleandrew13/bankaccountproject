@@ -7,8 +7,7 @@ using System.IO;
 
 namespace BankAccountProject
 {
-    class SavingsAccount
+    class SavingsAccount : Account
     {
-
     }
 }
