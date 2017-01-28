@@ -2,5 +2,7 @@ Checking Account Information for:
 Ronald J. Dump
 1600 Transylvania Ave
 Dump Tower, ID 87666
+Checking Account #4567891011
 
-Balance as of 1/28/2017 5:12:14 PM --- 500.13
+Balance as of 1/28/2017 6:28:10 PM --- $500.13
+

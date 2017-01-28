@@ -2,5 +2,7 @@ Savings Account Information for:
 Ronald J. Dump
 1600 Transylvania Ave
 Dump Tower, ID 87666
+Savings Account #7771313777
 
-Balance as of 1/28/2017 5:12:14 PM --- 7130.22
+Balance as of 1/28/2017 6:28:10 PM --- $7130.22
+

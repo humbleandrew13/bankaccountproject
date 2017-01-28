@@ -14,7 +14,7 @@ namespace BankAccountProject
         private double accountBalance;
 
         //Properties
-        protected string AccountNumber
+        public string AccountNumber
         {
             get { return this.accountNumber; }
             //no set; don't want this to change
@@ -37,7 +37,7 @@ namespace BankAccountProject
         public void CheckBalance()
         {
             Console.Clear();
-            Console.WriteLine(" For Savings Account number {0}, the balance is {1}", AccountNumber, AccountBalance);
+            Console.WriteLine(" For Savings Account number {0}, the balance is ${1}", AccountNumber, AccountBalance);
         }
 
         public void Deposit(double depositAmount)
