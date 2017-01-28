@@ -27,29 +27,35 @@ namespace BankAccountProject
             checkingAccountWriter.WriteLine(checkingAccount.AddressLine1);
             checkingAccountWriter.WriteLine(checkingAccount.AddressLine2);
             checkingAccountWriter.WriteLine();
+            checkingAccountWriter.WriteLine("Balance as of " + DateTime.Now + " --- $" + checkingAccount.AccountBalance);
+            savingsAccountWriter.WriteLine();
 
             reserveAccountWriter.WriteLine("Reserve Account Information for:");
             reserveAccountWriter.WriteLine(reserveAccount.UserName);
             reserveAccountWriter.WriteLine(reserveAccount.AddressLine1);
             reserveAccountWriter.WriteLine(reserveAccount.AddressLine2);
             reserveAccountWriter.WriteLine();
+            reserveAccountWriter.WriteLine("Balance as of " + DateTime.Now + " --- $" + reserveAccount.AccountBalance);
+            savingsAccountWriter.WriteLine();
 
             savingsAccountWriter.WriteLine("Savings Account Information for:");
             savingsAccountWriter.WriteLine(savingsAccount.UserName);
             savingsAccountWriter.WriteLine(savingsAccount.AddressLine1);
             savingsAccountWriter.WriteLine(savingsAccount.AddressLine2);
             savingsAccountWriter.WriteLine();
+            savingsAccountWriter.WriteLine("Balance as of " + DateTime.Now + " --- $" + savingsAccount.AccountBalance);
+            savingsAccountWriter.WriteLine();
 
             //UI Intro
-            Console.WriteLine("\n\n\n\n\n\n               Thank you for using Humble National Bank!\n");
+            Console.WriteLine("\n\n\n\n\n\n               Welcome to Humble National Bank ATM!\n");
             Console.ReadKey();
 
             //UI
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Humble National Bank\n\n\n");
-                Console.WriteLine("Please type the number of the action you would like to perform:\n\n");
+                Console.WriteLine(" Humble National Bank\n\n\n");
+                Console.WriteLine(" Please type the number of the action you would like to perform:\n\n");
                 Console.WriteLine("  1 -- Show User Information");
                 Console.WriteLine("  2 -- Check Balance");
                 Console.WriteLine("  3 -- Make a Deposit");
@@ -58,19 +64,19 @@ namespace BankAccountProject
 
                 string userInput = Console.ReadLine();
 
-                userInput = userInput.ToUpper();
+                userInput = userInput.ToUpper();//using caps in case numbers are entered as text
 
-                if (userInput == "1" || userInput == "ONE")
+                if (userInput == "1" || userInput == "ONE")//prints the hard wired user info
                 {
                     checkingAccount.ViewClientInformation();
                 }
-                else if (userInput == "2" || userInput == "TWO")
+                else if (userInput == "2" || userInput == "TWO")//prints balance of selected account type to screen
                 {
                     while (true)
                     {
                         Console.Clear();
-                        Console.WriteLine("For which Account would you like to check the balance?\n");
-                        Console.WriteLine("Please enter the corresponding number:\n\n\n");
+                        Console.WriteLine(" For which Account would you like to check the balance?\n");
+                        Console.WriteLine(" Please enter the corresponding number:\n\n\n");
                         Console.WriteLine("  1 -- Checking Account");
                         Console.WriteLine("  2 -- Reserve Account");
                         Console.WriteLine("  3 -- Savings Account\n\n");
@@ -85,19 +91,22 @@ namespace BankAccountProject
                         }
                         else if (checkBalanceInput == "2" || checkBalanceInput == "TWO")
                         {
-
+                            reserveAccount.CheckBalance();
                         }
                         else if (checkBalanceInput == "3" || checkBalanceInput == "THREE")
                         {
-
+                            savingsAccount.CheckBalance();
                         }
                         else if (checkBalanceInput == "9" || checkBalanceInput == "NINE")
                         {
+                            Console.WriteLine("\n\n Please press any key to return to the main menu.");
                             break;
                         }
                         else
                         {
-                            Console.WriteLine("\n\nI'm sorry, but that was not a correct selection. Please try again.");
+                            Console.Clear();
+                            Console.WriteLine("\n\n I'm sorry, but that was not a correct selection.");
+                            Console.WriteLine("\n Please press any key to try again.");
                         }
 
                         Console.ReadKey();
@@ -108,8 +117,8 @@ namespace BankAccountProject
                     while (true)
                     {
                         Console.Clear();
-                        Console.WriteLine("For which Account would you like to make a deposit?\n");
-                        Console.WriteLine("Please enter the corresponding number:\n\n\n");
+                        Console.WriteLine(" For which Account would you like to make a deposit?\n");
+                        Console.WriteLine(" Please enter the corresponding number:\n\n\n");
                         Console.WriteLine("  1 -- Checking Account");
                         Console.WriteLine("  2 -- Reserve Account");
                         Console.WriteLine("  3 -- Savings Account\n\n");
@@ -121,41 +130,88 @@ namespace BankAccountProject
                         if (depositAccountInput == "1" || depositAccountInput == "ONE")
                         {
                             Console.Clear();
-                            Console.WriteLine("Please enter the amount you wish to deposit in your Checking account:\n\n");
+                            Console.WriteLine(" Please enter the amount you wish to deposit in your Checking account:\n\n");
                             Console.Write("        $");
                             double depositAmount = Convert.ToDouble(Console.ReadLine());
 
                             if (depositAmount > 9999)
                             {
-                                Console.WriteLine("\n\n\n\n\nI am sorry, but you must go to a teller for this transaction.");
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but you must go to a teller for this transaction.");
+                                Console.WriteLine("\n Please press any key to try again.");
                             }
                             else if (depositAmount <= 0)
                             {
-                                Console.WriteLine("\n\n\n\n\nI am sorry, but this is not an appropriate amount for a deposit.");
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but that was not an appropriate amount for a deposit.");
+                                Console.WriteLine("\n Please press any key to try again.");
                             }
                             else
                             {
                                 depositAmount = Math.Round(depositAmount, 2);
                                 checkingAccount.Deposit(depositAmount);
-                                checkingAccountWriter.WriteLine(DateTime.Now + " -- Made a deposit + $" + depositAmount + ". New balance: $" + checkingAccount.AccountBalance);
-                                Console.WriteLine("\n\n\n\n\nYour deposit of " + depositAmount + " has been recorded.");
+                                checkingAccountWriter.WriteLine(DateTime.Now + " -- Made a deposit  +$" + depositAmount + ".  New balance: $" + checkingAccount.AccountBalance);
+                                Console.WriteLine("\n\n\n\n\n Your deposit of $" + depositAmount + " has been recorded in your Checking Account.");
                             }
                         }
                         else if (depositAccountInput == "2" || depositAccountInput == "TWO")
                         {
+                            Console.Clear();
+                            Console.WriteLine(" Please enter the amount you wish to deposit in your Reserve account:\n\n");
+                            Console.Write("        $");
+                            double depositAmount = Convert.ToDouble(Console.ReadLine());
 
+                            if (depositAmount > 9999)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but you must go to a teller for this transaction.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else if (depositAmount <= 0)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but that was not an appropriate amount for a deposit.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else
+                            {
+                                depositAmount = Math.Round(depositAmount, 2);
+                                reserveAccount.Deposit(depositAmount);
+                                reserveAccountWriter.WriteLine(DateTime.Now + " -- Made a deposit  +$" + depositAmount + ".  New balance: $" + reserveAccount.AccountBalance);
+                                Console.WriteLine("\n\n\n\n\n Your deposit of $" + depositAmount + " has been recorded in your Reserve Account.");
+                            }
                         }
                         else if (depositAccountInput == "3" || depositAccountInput == "THREE")
                         {
+                            Console.Clear();
+                            Console.WriteLine(" Please enter the amount you wish to deposit in your Savings account:\n\n");
+                            Console.Write("        $");
+                            double depositAmount = Convert.ToDouble(Console.ReadLine());
 
+                            if (depositAmount > 9999)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but you must go to a teller for this transaction.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else if (depositAmount <= 0)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but that was not an appropriate amount for a deposit.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else
+                            {
+                                depositAmount = Math.Round(depositAmount, 2);
+                                savingsAccount.Deposit(depositAmount);
+                                savingsAccountWriter.WriteLine(DateTime.Now + " -- Made a deposit  +$" + depositAmount + ".  New balance: $" + savingsAccount.AccountBalance);
+                                Console.WriteLine("\n\n\n\n\n Your deposit of $" + depositAmount + " has been recorded in your Savings Account.");
+                            }
                         }
                         else if (depositAccountInput == "9" || depositAccountInput == "NINE")
                         {
+                            Console.WriteLine("\n\n Press any key to go back to the Main Menu.");
                             break;
                         }
                         else
                         {
-                            Console.WriteLine("I'm sorry, but that was not correct input. Please try again.");
+                            Console.Clear();
+                            Console.WriteLine("\n\n I'm sorry, but that was not a correct selection.");
+                            Console.WriteLine("\n Please press any key to try again.");
                         }
 
                         Console.ReadKey();
@@ -163,17 +219,130 @@ namespace BankAccountProject
                 }
                 else if (userInput == "4" || userInput == "FOUR")
                 {
+                    while (true)
+                    {
+                        Console.Clear();
+                        Console.WriteLine(" For which Account would you like to make a withdrawal?\n");
+                        Console.WriteLine(" Please enter the corresponding number:\n\n\n");
+                        Console.WriteLine("  1 -- Checking Account");
+                        Console.WriteLine("  2 -- Reserve Account");
+                        Console.WriteLine("  3 -- Savings Account\n\n");
+                        Console.WriteLine("  9 -- Exit to Main Menu\n\n\n\n\n");
 
+                        string withdrawAccountInput = Console.ReadLine();
+                        withdrawAccountInput = withdrawAccountInput.ToUpper();
+
+                        if (withdrawAccountInput == "1" || withdrawAccountInput == "ONE")
+                        {
+                            Console.Clear();
+                            Console.WriteLine(" Please enter the amount you wish to withdraw from your Checking account:\n\n");
+                            Console.Write("        $");
+                            double withdrawAmount = Convert.ToDouble(Console.ReadLine());
+
+                            if (withdrawAmount > checkingAccount.AccountBalance)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but you do not have sufficient funds in this account.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else if (withdrawAmount <= 0)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but that was not an appropriate amount for a withdrawal.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else
+                            {
+                                withdrawAmount = Math.Round(withdrawAmount, 2);
+                                checkingAccount.Withdraw(withdrawAmount);
+                                checkingAccountWriter.WriteLine(DateTime.Now + " -- Made a withdrawal  -$" + withdrawAmount + ".  New balance: $" + checkingAccount.AccountBalance);
+                                Console.WriteLine("\n\n\n\n\n Your withdrawal of $" + withdrawAmount + " has been recorded in your Checking Account.");
+                            }
+                        }
+                        else if (withdrawAccountInput == "2" || withdrawAccountInput == "TWO")
+                        {
+                            Console.Clear();
+                            Console.WriteLine(" Please enter the amount you wish to withdraw from your Reserve account:\n\n");
+                            Console.Write("        $");
+                            double withdrawAmount = Convert.ToDouble(Console.ReadLine());
+
+                            if (withdrawAmount > reserveAccount.AccountBalance)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but you do not have sufficient funds in this account.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else if (withdrawAmount <= 0)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but that was not an appropriate amount for a withdrawal.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else
+                            {
+                                withdrawAmount = Math.Round(withdrawAmount, 2);
+                                reserveAccount.Withdraw(withdrawAmount);
+                                reserveAccountWriter.WriteLine(DateTime.Now + " -- Made a withdrawal  -$" + withdrawAmount + ".  New balance: $" + reserveAccount.AccountBalance);
+                                Console.WriteLine("\n\n\n\n\n Your withdrawal of $" + withdrawAmount + " has been recorded in your Reserve Account.");
+                            }
+                        }
+                        else if (withdrawAccountInput == "3" || withdrawAccountInput == "THREE")
+                        {
+                            Console.Clear();
+                            Console.WriteLine(" Please enter the amount you wish to withdraw from your Savings account:\n\n");
+                            Console.Write("        $");
+                            double withdrawAmount = Convert.ToDouble(Console.ReadLine());
+
+                            if (withdrawAmount > savingsAccount.AccountBalance)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but you do not have sufficient funds in this account.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else if (withdrawAmount <= 0)
+                            {
+                                Console.WriteLine("\n\n\n\n\n I am sorry, but that was not an appropriate amount for a withdrawal.");
+                                Console.WriteLine("\n Please press any key to try again.");
+                            }
+                            else
+                            {
+                                withdrawAmount = Math.Round(withdrawAmount, 2);
+                                savingsAccount.Withdraw(withdrawAmount);
+                                savingsAccountWriter.WriteLine(DateTime.Now + " -- Made a withdrawal  -$" + withdrawAmount + ".  New balance: $" + savingsAccount.AccountBalance);
+                                Console.WriteLine("\n\n\n\n\n Your withdrawal of $" + withdrawAmount + " has been recorded in your Savings Account.");
+                            }
+                        }
+                        else if (withdrawAccountInput == "9" || withdrawAccountInput == "NINE")
+                        {
+                            Console.WriteLine("\n\n Press any key to go back to the Main Menu.");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\n I'm sorry, but that was not a correct selection.\n\n");
+                            Console.WriteLine("\n Please press any key to try again.");
+                        }
+
+                        Console.ReadKey();
+                    }
                 }
                 else if (userInput == "9" || userInput == "NINE")
                 {
                     break;
                 }
+                else
+                {
+                    Console.WriteLine("\n\n I'm sorry, but that was not a correct selection.\n\n");
+                    Console.WriteLine("\n Please press any key to try again.");
+                }
+
+                Console.ReadKey();
             }
 
+            Console.Clear();
+            Console.WriteLine("\n\n\n   Thank you for using Humble National Bank!\n\n");
+            Console.WriteLine("   It is our pleasure to help with your banking needs.");
+            
             checkingAccountWriter.Close();
             savingsAccountWriter.Close();
             reserveAccountWriter.Close();
+
+            Console.ReadKey();
         }
     }
 }

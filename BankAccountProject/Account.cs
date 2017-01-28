@@ -34,7 +34,7 @@ namespace BankAccountProject
         {
             userName = "Ronald J. Dump";
             addressLine1 = "1600 Transylvania Ave";
-            addressLine2 = "Dump Tower, ID 87499";
+            addressLine2 = "Dump Tower, ID 87666";
         }
 
         //Methods
@@ -45,7 +45,6 @@ namespace BankAccountProject
             Console.WriteLine("Name:    {0}\n", UserName);
             Console.WriteLine("Address: {0}", addressLine1);
             Console.WriteLine("         {0}", addressLine2);
-            Console.ReadKey();
         }
     }
 }

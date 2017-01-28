@@ -30,7 +30,7 @@ namespace BankAccountProject
         public CheckingAccount():base()
         {
             this.accountNumber = "4567891011";
-            this.accountBalance = 500.13; //initializing it with $500
+            this.accountBalance = 500.13;
         }
         
         //Methods
