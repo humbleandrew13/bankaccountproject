@@ -295,7 +295,7 @@ namespace BankAccountProject
                             catch (FormatException)
                             {
                                 Console.WriteLine("\n\n I am sorry, but this is not an appropriate format for a dollar amount.\n");
-                                Console.WriteLine("Please be more careful when entering the deposit value.");
+                                Console.WriteLine("Please be more careful when entering the withdrawal amount.");
                             }
                         }
                         else if (withdrawAccountInput == "2" || withdrawAccountInput == "TWO")
@@ -329,7 +329,7 @@ namespace BankAccountProject
                             catch (FormatException)
                             {
                                 Console.WriteLine("\n\n I am sorry, but this is not an appropriate format for a dollar amount.\n");
-                                Console.WriteLine("Please be more careful when entering the deposit value.");
+                                Console.WriteLine("Please be more careful when entering the withdrawal amount.");
                             }
                         }
                         else if (withdrawAccountInput == "3" || withdrawAccountInput == "THREE")
@@ -363,7 +363,7 @@ namespace BankAccountProject
                             catch (FormatException)
                             {
                                 Console.WriteLine("\n\n I am sorry, but this is not an appropriate format for a dollar amount.\n");
-                                Console.WriteLine("Please be more careful when entering the deposit value.");
+                                Console.WriteLine("Please be more careful when entering the withdrawal amount.");
                             }
                         }
                         else if (withdrawAccountInput == "9" || withdrawAccountInput == "NINE")
