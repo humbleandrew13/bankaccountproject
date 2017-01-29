@@ -12,7 +12,7 @@ namespace BankAccountProject
         //fields
         private string accountNumber;
         private double accountBalance;
-                
+
         //Properties
         public string AccountNumber
         {
@@ -25,14 +25,14 @@ namespace BankAccountProject
             get { return this.accountBalance; }
             set { this.accountBalance = value; }
         }
-        
+
         //Constructor
-        public CheckingAccount():base()
+        public CheckingAccount() : base()
         {
             this.accountNumber = "4567891011";
             this.accountBalance = 500.13;
         }
-        
+
         //Methods
         public void CheckBalance()
         {

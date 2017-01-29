@@ -264,7 +264,7 @@ namespace BankAccountProject
                         string withdrawAccountInput = Console.ReadLine();
                         withdrawAccountInput = withdrawAccountInput.ToUpper();
 
-                        if (withdrawAccountInput == "1" || withdrawAccountInput == "ONE")
+                        if (withdrawAccountInput == "1" || withdrawAccountInput == "ONE")//checking account withdrawal
                         {
                             Console.Clear();
                             Console.WriteLine(" Please enter the amount you wish to withdraw from your Checking account:\n\n");
@@ -298,7 +298,7 @@ namespace BankAccountProject
                                 Console.WriteLine("Please be more careful when entering the withdrawal amount.");
                             }
                         }
-                        else if (withdrawAccountInput == "2" || withdrawAccountInput == "TWO")
+                        else if (withdrawAccountInput == "2" || withdrawAccountInput == "TWO")//same code for reserve account
                         {
                             Console.Clear();
                             Console.WriteLine(" Please enter the amount you wish to withdraw from your Reserve account:\n\n");
@@ -332,14 +332,14 @@ namespace BankAccountProject
                                 Console.WriteLine("Please be more careful when entering the withdrawal amount.");
                             }
                         }
-                        else if (withdrawAccountInput == "3" || withdrawAccountInput == "THREE")
+                        else if (withdrawAccountInput == "3" || withdrawAccountInput == "THREE")//same code for savings account
                         {
                             Console.Clear();
                             Console.WriteLine(" Please enter the amount you wish to withdraw from your Savings account:\n\n");
                             Console.Write("        $");
                             try
-                            { 
-                            double withdrawAmount = Convert.ToDouble(Console.ReadLine());
+                            {
+                                double withdrawAmount = Convert.ToDouble(Console.ReadLine());
 
                                 if (withdrawAmount > savingsAccount.AccountBalance)
                                 {
@@ -397,11 +397,15 @@ namespace BankAccountProject
             Console.WriteLine("\n\n\n   Thank you for using Humble National Bank!\n\n");
             Console.WriteLine("   It is our pleasure to help with your banking needs.");
 
+            //only way to close the streams is by exiting the ATM
             checkingAccountWriter.Close();
             savingsAccountWriter.Close();
             reserveAccountWriter.Close();
 
             Console.ReadKey();
+
+            //I feel as though a lot in this Program could be put into Methods, but I could not get the output to function correctly when I tried.
+            //I am still going to play around with it to see if I can get this code to be cleaner with much more in my parent and derived classes.
         }
     }
 }

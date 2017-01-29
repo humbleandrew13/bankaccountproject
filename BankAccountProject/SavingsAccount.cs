@@ -27,7 +27,7 @@ namespace BankAccountProject
         }
 
         //Constructor
-        public SavingsAccount():base()
+        public SavingsAccount() : base()
         {
             this.accountNumber = "7771313777";
             this.accountBalance = 7130.22;
